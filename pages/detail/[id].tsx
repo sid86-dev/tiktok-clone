@@ -130,15 +130,15 @@ const VideoDetails = ({ postDetails }: IProps) => {
 }
 
 
-export const getServerSideProps = async ({
-    params: { id },
-}: {
-    params: { id: string };
-}) => {
-    const res = await axios.get(`https://tiktok-clone-1ruo4m5fx-sid86-dev.vercel.app/api/${id}`);
+VideoDetails.getInitialProps = async (ctx: any) => {
+    const id: string = ctx.query.id;
+
+    const url = `https://tiktok-clone-8n5ou86md-sid86-dev.vercel.app/api/details?id=${id}`;
+
+    const res = await axios.get(url);
 
     return {
-        props: { postDetails: res.data },
+        postDetails: res.data
     };
 };
 
