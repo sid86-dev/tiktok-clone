@@ -130,8 +130,11 @@ const VideoDetails = ({ postDetails }: IProps) => {
 }
 
 
-VideoDetails.getInitialProps = async (ctx: any) => {
-    const id: string = ctx.query.id;
+export const getServerSideProps = async ({
+    params: { id },
+}: {
+    params: { id: string };
+}) => {
 
     const url = `https://tiktok-clone-9oauxket6-sid86-dev.vercel.app/api/details?id=${id}`;
 
