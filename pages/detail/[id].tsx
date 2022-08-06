@@ -11,6 +11,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useAuthStore from '../../store/authStore';
 import LikeButton from '../../components/LikeButton';
+import { client } from '../../utils/client';
+import { postDetailQuery } from '../../utils/queries';
 
 interface IProps {
     postDetails: Video
@@ -136,12 +138,14 @@ export const getServerSideProps = async ({
     params: { id: string };
 }) => {
 
-    const url = `https://tiktok-clone-9oauxket6-sid86-dev.vercel.app/api/details?id=${id}`;
+    const query = postDetailQuery(id);
 
-    const res = await axios.get(url);
+    const data = await client.fetch(query);
 
     return {
-        postDetails: res.data
+        props: {
+            postDetails: data[0]
+        }
     };
 };
 
