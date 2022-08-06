@@ -133,7 +133,7 @@ const VideoDetails = ({ postDetails }: IProps) => {
 VideoDetails.getInitialProps = async (ctx: any) => {
     const id: string = ctx.query.id;
 
-    const url = `https://tiktok-clone-8n5ou86md-sid86-dev.vercel.app/api/details?id=${id}`;
+    const url = `https://tiktok-clone-9oauxket6-sid86-dev.vercel.app/api/details?id=${id}`;
 
     const res = await axios.get(url);
 
