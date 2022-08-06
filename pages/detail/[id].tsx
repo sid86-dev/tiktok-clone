@@ -11,7 +11,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useAuthStore from '../../store/authStore';
 import LikeButton from '../../components/LikeButton';
-import Comments from '../../components/Comments';
 
 interface IProps {
     postDetails: Video
@@ -123,7 +122,6 @@ const VideoDetails = ({ postDetails }: IProps) => {
                             />
                         )}
                     </div>
-                    <Comments />
                 </div>
             </div>
 
@@ -137,7 +135,7 @@ export const getServerSideProps = async ({
 }: {
     params: { id: string };
 }) => {
-    const res = await axios.get(`https://tiktok-clone-1.sid86-dev.repl.co/api/post/${id}`);
+    const res = await axios.get(`/api/post/${id}`);
 
     return {
         props: { postDetails: res.data },
